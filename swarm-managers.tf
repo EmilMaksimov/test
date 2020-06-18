@@ -12,7 +12,7 @@ resource "google_compute_instance" "managers" {
   }
 
   metadata {
-    sshKeys = "${var.ssh_user}:${file("~/.ssh/id_rsa.pub")}"
+    sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
 
   network_interface {

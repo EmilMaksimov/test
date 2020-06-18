@@ -38,3 +38,7 @@ variable "image_name" {
 variable "ssh_user" {
   default = "emaksimov"
 }
+
+variable "ssh_pub_key_file" {
+  default = "~/.ssh/id_rsa.pub"
+}
