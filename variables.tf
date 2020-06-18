@@ -32,7 +32,7 @@ variable "zone" {
   description = "The zone to provision into"
 }
 variable "image_name" {
-  default = "cos-cloud/cos-stable-81-12871-148-0"
+  default = "centos-7-v20181210"
 }
 
 variable "ssh_user" {

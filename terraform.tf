@@ -3,3 +3,7 @@ provider "google" {
   project     = "${var.project}"
   region      = "${var.region}"
 }
+
+data "template_file" "sysprep_script" {
+  template = "${file("./helper_scripts/sysprep.sh")}"
+}

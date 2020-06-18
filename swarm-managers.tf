@@ -11,6 +11,8 @@ resource "google_compute_instance" "managers" {
     }
   }
 
+  metadata_startup_script = "${data.template_file.sysprep-bastion.rendered}"
+  
   metadata {
     sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
