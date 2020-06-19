@@ -4,6 +4,6 @@ provider "google" {
   region      = "${var.region}"
 }
 
-data "template_file" "sysprep_script" {
-  template = "${file("./helper_scripts/sysprep.sh")}"
+data "template_file" "dock-kube" {
+  template = "${file("./helper_scripts/setup-docker-kubetools.sh")}"
 }

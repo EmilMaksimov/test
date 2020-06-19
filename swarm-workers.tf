@@ -3,6 +3,7 @@ resource "google_compute_instance" "workers" {
   name         = "worker${count.index + 1}"
   machine_type = "${var.swarm_workers_instance_type}"
   zone         = "${var.zone}"
+  can_ip_forward = true
 
   depends_on = ["google_compute_instance.managers"]
 
@@ -12,6 +13,9 @@ resource "google_compute_instance" "workers" {
       size  = 100
     }
   }
+  
+
+  metadata_startup_script = "${data.template_file.dock-kube.rendered}"
 
   metadata {
     sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"

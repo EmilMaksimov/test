@@ -3,6 +3,7 @@ resource "google_compute_instance" "managers" {
   name         = "manager"
   machine_type = "${var.swarm_managers_instance_type}"
   zone         = "${var.zone}"
+  can_ip_forward = true
 
   boot_disk {
     initialize_params {
@@ -11,8 +12,8 @@ resource "google_compute_instance" "managers" {
     }
   }
 
-  metadata_startup_script = "${data.template_file.sysprep-bastion.rendered}"
-  
+  metadata_startup_script = "${data.template_file.dock-kube.rendered}"
+
   metadata {
     sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
